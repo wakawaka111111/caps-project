@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Marimar Beauty Salon</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main CSS file -->
+    
+    <style>
+        /* General Reset and Body Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=80');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #ffd700;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            animation: fadeIn 1s ease-in;
+        }
+
+        header {
+            background: linear-gradient(to right, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.8));
+            color: #ffd700;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid #ffd700;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-right: 40px;
+        }
+
+        nav ul li a {
+            color: #ffd700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        main {
+            flex: 1;
+            margin: 30px auto;
+            width: 85%;
+            max-width: 1200px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in forwards;
+            text-align: center;
+        }
+
+        #gallery {
+            padding: 20px;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 10px; /* Space between the images */
+        }
+
+        .gallery-image {
+            width: 100%; /* Full width of the grid item */
+            height: 200px; /* Adjust the height to your preference */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            object-fit: cover; /* Keeps aspect ratio */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+            padding-top: 60px; /* Location of content */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%; /* Responsive width */
+            max-width: 700px; /* Max width */
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ffd700; /* Change to gold on hover */
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background: linear-gradient(to right, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.8));
+            color: #ffd700;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1.2rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://scontent.fcgy1-3.fna.fbcdn.net/v/t39.30808-6/277308303_408654257737184_3382153348905773962_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFQU7g1qQBxnDJpAlr_m1_Sam8OKL3JKE9qbw4ovckoT-ehH_P5Votel6XGqxTCWCznJPJd6Nz_E2_zqCv8o959&_nc_ohc=A1hZOvauAHoQ7kNvgEkwCWK&_nc_oc=AdgZsX4F92MGhFdVkTeuMTg9j4oiAEYKmogr_v0QYqcLwiAGcqZgoP5FDCKRC7IGUdc&_nc_zt=23&_nc_ht=scontent.fcgy1-3.fna&_nc_gid=AXh8vW-yhd0ewGFza7TkBVA&oh=00_AYBCrErBry30QVClsrauTjmO89Kyj0uljub_zE-WN_2oPw&oe=67C9AC34" 
+        alt="Salon Logo" class="logo">
+        <div class="header-title">
+            <h1>Marimar Beauty Salon</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="user_dashboard.php">Home</a></li>
+                <li><a href="about_us.php">About Us</a></li>
+                <li><a href="services.php">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="franchise.php">Franchise</a></li>
+                <li><a href="careers.php">Careers</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="gallery">
+            <h2 class="styled-m">Gallery</h2>
+            <div class="gallery-container">
+                <img src="https://scontent.fcgy1-2.fna.fbcdn.net/v/t39.30808-6/482028188_1122917219846922_6065187717072596018_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGmBk7DXjMDkJi8RItE8FkPH3ShZCpScw4fdKFkKlJzDjt0uiEctWfAI5zqXasv5HQFD8IkhX50S1lc1nnDKhVh&_nc_ohc=Fe6vb-sg90wQ7kNvgGNzHiK&_nc_oc=AdjYFvy3AXAs2pAdW1VNFT4FCgRw8pSkbwJOlRWy09tjdLgphFkjOdPL3P73kgiQU1A&_nc_zt=23&_nc_ht=scontent.fcgy1-2.fna&_nc_gid=AsRRKWlYyZkDdWGQ_kDoPQJ&oh=00_AYEyPkJLpgJ3FaHlmC_8WV7UkhqBj7gHS6xVToTn4O9cWg&oe=67D04CD5" alt="Image 1" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-2.fna.fbcdn.net/v/t39.30808-6/481235390_1122917113180266_1359598345778862648_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEJQFopCmB6LCGHDzbpYPV4JqndVMaXCv8mqd1UxpcK__MJpSmL6eg0qm_CPzSpEc4Bcv8N5GR-V8vPuZ5Gl_Vr&_nc_ohc=rDgoxGay4VoQ7kNvgFeP4cW&_nc_oc=Adhajx_zKMR9_U5ts6la4LL8aoiyWlwoViCetCIFgQ8G8rM1xO4KsHml9xtUdtIu5Nc&_nc_zt=23&_nc_ht=scontent.fcgy1-2.fna&_nc_gid=AV7hV764usQM8vTdKtHnkRk&oh=00_AYHBtQ3eW3Yr2RV8yio6QOA27PfYiHc79ic-WlmOoAd_3g&oe=67D04021" alt="Image 2" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-1.fna.fbcdn.net/v/t39.30808-6/481163305_1122917253180252_7791745606871895115_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeH7WGvKRxd_IpjvMIZzwqx7lKqPPW4TQTaUqo89bhNBNihquzXYX_00ZXK8zVXQWrcAGIxbQCX34ys24ShMKL0w&_nc_ohc=IflawJE8ihAQ7kNvgGKg4yn&_nc_oc=AdgIaIgYFZ3uTLq06gv1WbX_-3NuaeupdYYsG4zLNeXQsULCtcWgxDO2rHOnToVFqEo&_nc_zt=23&_nc_ht=scontent.fcgy1-1.fna&_nc_gid=AkCbnswyb-cruCSqgy2LrC-&oh=00_AYGt33m4L7F1s2T8fBs7nIWiyVkazxXfRE9ZEYsdZ20dBA&oe=67D0299C" alt="Image 3" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-3.fna.fbcdn.net/v/t39.30808-6/481144866_1122917196513591_3874374687110544314_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFa5ljCKfBGOspW30OYnGc16HybptjahuvofJum2NqG69fKuHZGQbPaOQ-bondzSEBKPbSNG3dvm5RhuRnOTlIS&_nc_ohc=34ux7UKB1jYQ7kNvgFnlq8z&_nc_oc=AdhZZHM611fxcsHYrTLQKiwC4CskLsvHgeyBhg2Z6ClsrEfBqIZbUftTp_Z7s5QI2Gs&_nc_zt=23&_nc_ht=scontent.fcgy1-3.fna&_nc_gid=A7NrkSxpkybyfS7OZgkH6Jm&oh=00_AYHB5T326-QbQF7yvfDNVJtlzuHttgajhSTlnCIE3AW03Q&oe=67D02D4E" alt="Image 4" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-2.fna.fbcdn.net/v/t39.30808-6/480724209_1118774670261177_2092685658858298508_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGTiFngZji01qerboW8676N6vzQWxNbOznq_NBbE1s7OftzlOe7ddIhs-XBsbLlQ6hulTX29em-6AWfN6csTYV5&_nc_ohc=qZR3MypvCKkQ7kNvgHBVGJA&_nc_oc=AdjN1CvCrhEQqfhW-kVDeWdkMfPbcmaK4AXoUPX-5YEvTKdMWtIDGQi5XqsUGLIe258&_nc_zt=23&_nc_ht=scontent.fcgy1-2.fna&_nc_gid=AmstIeMCmnG0d-2bYEBnpWp&oh=00_AYGXo5pknf_GAIESr8efjvHn9cC8ykoX-HU4wms4TiykrA&oe=67D03834" alt="Image 5" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-1.fna.fbcdn.net/v/t39.30808-6/481500475_1117937473678230_3503655870278409738_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEiX0gB7PlTms8-9MvwdaeDFjLBTA8hbQoWMsFMDyFtCih-o07GUUfC30d9GPu8_8W_lTrxE4M-uSmQeATfVv5M&_nc_ohc=dQE9ErsaEAIQ7kNvgEy5TZY&_nc_oc=AdgJcdgusTaUMVcVjiMXFMqnhdQC6RiXC6BSEU5bFzuu2-EFkZ7ataWO9iUgb0z8ArQ&_nc_zt=23&_nc_ht=scontent.fcgy1-1.fna&_nc_gid=Adt65fwxhH2hOXAbS_VUCY0&oh=00_AYF3s4YKllp5GJVXYNVy1HJDw1XvXKy8alRLimQHwLsCcg&oe=67D03DD6" alt="Image 6" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-1.fna.fbcdn.net/v/t39.30808-6/472753533_1079694754169169_5740745658739413977_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeH_UDghXs0jEohmo_3AkdNbadtT1nBMOjBp21PWcEw6MKCN3b-ZxAPfNUpz4_3poa5sJvbE_h_229z5ZZLFW3Eq&_nc_ohc=ciGhSZCqaTAQ7kNvgHz9fWX&_nc_oc=AdjTyYnz0rVgpRw-NzTUUWDtOiJ6s4dSZblEUz6DXH1_qowlCPubZSHb8g0OQ9fRigg&_nc_zt=23&_nc_ht=scontent.fcgy1-1.fna&_nc_gid=AJ_Etil0oXdeVnWcgoHUrO1&oh=00_AYEkjxIWfN3QJiMqQ8bhvPHs7vyEDkykmgD7j4JnD0YQ0A&oe=67D05231" alt="Image 7" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-1.fna.fbcdn.net/v/t39.30808-6/482070323_1122858243186153_1322525960417012790_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGg9uFjscr7QmYZ0_LeTcByTcEjJBYmWNdNwSMkFiZY16bNhSvlHJs4MO38SxWDilETj6fYwxVPUZ-ofSS2zO2e&_nc_ohc=YUorFu8U3uoQ7kNvgEw_EVp&_nc_oc=Adj3CO2rkgC0SfdZnk09MQcSZ9_axHZ-DzautwHZn0F-k-caZuADOR6HbmjcAH_Zcw8&_nc_zt=23&_nc_ht=scontent.fcgy1-1.fna&_nc_gid=AQnLJYDQXwf6wjmEscPt21Q&oh=00_AYFG3jWIRKfIdsA1G6Yl5J4rqPUcbJrarJhhp1tzKGqicw&oe=67D02657" alt="Image 8" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-1.fna.fbcdn.net/v/t39.30808-6/468309992_1047410670730911_73128768250764304_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeENYEUc2GbLz4nkYPu3XUX2o8SHhUV2iXijxIeFRXaJeHkhI6k_j0ZFz6gMGxz8Wn74qtCuAVJK4G6itX4r2Dgh&_nc_ohc=chYaaV0ZhpIQ7kNvgF2YYwu&_nc_oc=Adjti5rJli3E1mW9S2myavO29aOjgnEjqmEuUVzhi5x0E91fUGtl40z718J__zfQePg&_nc_zt=23&_nc_ht=scontent.fcgy1-1.fna&_nc_gid=AK89z68NyG79uI2delj8BEK&oh=00_AYHm75InEKG7EwoONmmyo1g6oArdI78ZEuZcftRZRQjXKA&oe=67D04D68" alt="Image 9" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-3.fna.fbcdn.net/v/t39.30808-6/468319066_1047411714064140_7008127838648091725_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG4a-D-0jGu5VL6rPsPLZ_Y0FxzLtaPqvLQXHMu1o-q8kzC4m5RYkh5zecfbJRkKW5EdeblGs0-BZzcN-TZ9aaX&_nc_ohc=vVQ4j8KUUicQ7kNvgHUrJqj&_nc_oc=AdhOHTBtpQFv755MqVYt0zBZcrn03TIWyG63s-5zUSrnN-rGII6wAw4I1WE5yOx70o4&_nc_zt=23&_nc_ht=scontent.fcgy1-3.fna&_nc_gid=AWOfG99U0tFZW_MIBVEd4GP&oh=00_AYGSxiA1eC79XEVss-vQpyGCa506qa5JRPSM-_heattgkA&oe=67D04CD3" alt="Image 10" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-2.fna.fbcdn.net/v/t39.30808-6/466066002_1035345421937436_2634885431132667237_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFblfGvTzlB1yldshwltew42yUCDo-fX4HbJQIOj59fgU9aFwsPy3oKlMeKMOC_GsGbDlUdsnI1u4d_5ORVDnv3&_nc_ohc=ROQLbpt1uywQ7kNvgHjKAq7&_nc_oc=AdizX7VU_8pQIukClfQv0VLS-p12y1wcq2CRbLaPhDZmhzPeSfZM46K1s_yQb0DtCDg&_nc_zt=23&_nc_ht=scontent.fcgy1-2.fna&_nc_gid=AEq3gkltbvkDXUrHb_mgvcy&oh=00_AYF3n0vQBolJHh7usqDawhirVx0Y2nyH9Phid0Id7Epe2w&oe=67D04B15" alt="Image 11" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-1.fna.fbcdn.net/v/t39.30808-6/457621626_981589050646407_9064020585775009407_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGd2G8CHxoIJKQaxmnEX9OrjZirOFBWw6SNmKs4UFbDpAErkPn4pApNQyN0HSAaKpEy72ua150HcvHVgvkLt3i6&_nc_ohc=TQf5r6OpYAQQ7kNvgG6LHGt&_nc_oc=AdgTthljPKeTtAIrbTbRPvixzrMpERNi-aQjS4k3ToRepgZ9bhx5NczcOLbllF_S01U&_nc_zt=23&_nc_ht=scontent.fcgy1-1.fna&_nc_gid=AHZkMgIaZ2JSm0DS_eX61sU&oh=00_AYF5IAxfTpsxc-G_QWpkq1cRmpzddahnbSECrX8J60ZOnQ&oe=67D025AC" alt="Image 12" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-3.fna.fbcdn.net/v/t39.30808-6/454346598_962125899259389_5007348399694366198_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFZY4p2OPZRdX3PTkD3c8Yn42oqREt5AgbjaipES3kCBgu25TC6PfuLsrrps4azSQPNbrRfGwkEf1Az1g_8tmVK&_nc_ohc=qDqrdV3GcnYQ7kNvgEMsFUy&_nc_oc=Adgj-G4qQDlPfFPCNFdi15ugIeUxZPIN1AeTCTaQxX_2oYenfGcDHq7N81viDbkbtws&_nc_zt=23&_nc_ht=scontent.fcgy1-3.fna&_nc_gid=AcXqVC84ipp0Pe7QTM0vQn6&oh=00_AYHF4DujeHDDyguWER4Ri0dvaM8iSF9DXCiBOvjTeBy88A&oe=67D050D9" alt="Image 13" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-3.fna.fbcdn.net/v/t39.30808-6/469408265_1055812339890744_806541270128178677_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeF6Wy5QL-v_GlotetOHWj2xO25lYMr5Oek7bmVgyvk56QraduEi-g8k9V6fyyuWSSomIehWS2KliCr5NCgTYgPO&_nc_ohc=JRCjq9RbPWQQ7kNvgEo-jLr&_nc_oc=AdgYL7MN-JuHFolZRJwQj1Z3mPzv2RwWfmZzWSUeg2bKXglVs1pCUi2ZYJvoavrf1y0&_nc_zt=23&_nc_ht=scontent.fcgy1-3.fna&_nc_gid=ANHSEAH7VtxE76bnKkvNwg9&oh=00_AYH6EFNp9q9PvQsy-a-eC2j4p9qoruK9PSlWT0a-MvoFew&oe=67D036CE" alt="Image 14" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-2.fna.fbcdn.net/v/t39.30808-6/455278558_969089798562999_6502748987958902542_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEaifAYRAIeaNyRY_wfgkvpdhq9HDyRfl52Gr0cPJF-Xv7KsKBIWkZRA3lMw2fCo0LdoM68cbqbIeky_HBwpejt&_nc_ohc=IB1EVTuE8AAQ7kNvgEUxeVP&_nc_oc=Adh_aZtSodlVWl1bGshPQldqK0_KhVr4foYsEmZCyV9M8ouywAo-mCMi_owPPHJWy2M&_nc_zt=23&_nc_ht=scontent.fcgy1-2.fna&_nc_gid=A239M97kJBQxPnSA49L4Q3_&oh=00_AYHMkSCuwJIc915eh-ys03LV70rErEm2WRzF05XI1JsB6g&oe=67D022C9" alt="Image 15" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-1.fna.fbcdn.net/v/t39.30808-6/441500806_935953738543272_5774520555805342453_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFW3mmsf46G3eMvcJxoTof6Asb0ffV7MqkCxvR99XsyqQJx5BLm-ZpmhEaqjBcP4tP2s_lpXzemVhf3hONw3-8G&_nc_ohc=YacwG9cq27IQ7kNvgEh3sQ2&_nc_oc=AdguKdpkbeouiwApVdRWag15bW7n05js8jfBYVx3SDkYQt8C1c-wRS-Kvg7RYmUM2F4&_nc_zt=23&_nc_ht=scontent.fcgy1-1.fna&_nc_gid=ANBSim6GE7Bw9TDfMieqeyo&oh=00_AYHpsE2FrgUr-df-n8Nvx0ZeUjPqizrCprFI_w2yl1CABw&oe=67D03C2B" alt="Image 16" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-1.fna.fbcdn.net/v/t39.30808-6/434885046_883682960437017_8552831134266011853_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFHDVCxYnDBoi1Z0WupyCKehB8r5f5jdHeEHyvl_mN0d5MrOEylsQmvgy4xnNKzk_5Wk0luXEu9p2CaGd3qTxzE&_nc_ohc=QaxYcdx4ESsQ7kNvgGZR5ix&_nc_oc=Adg9EMTgNdToB0ds5aaNQvsPBtcsblfBNlYMIePFDHIiYcTKodWC8C16dwJM49IPK2k&_nc_zt=23&_nc_ht=scontent.fcgy1-1.fna&_nc_gid=AGqt2ZtuWrJaaBNZ5maUWtP&oh=00_AYGkpYGMZwOspl5htppJObspc0bbvJfuuM8dMaUMPRRk2g&oe=67D038E7" alt="Image 17" class="gallery-image" onclick="openModal(this)">
+                <img src="https://scontent.fcgy1-2.fna.fbcdn.net/v/t39.30808-6/366091124_724533669685281_2240600615587207026_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEdUJloRonsJCUd8PYAmRMr1yyaqj1dysbXLJqqPV3KxiBGDxdlNfeaVrOWfpW1qYR-toZInwW-EtxV18pkhMt7&_nc_ohc=LF9308_HersQ7kNvgEmIxZQ&_nc_oc=Adh8bjghlh7nD6ppBLpEqceWiMnvdVH2_15OkrOqsksfO1xfk0N5AFDeb3M3MDxhVJ4&_nc_zt=23&_nc_ht=scontent.fcgy1-2.fna&_nc_gid=A8aNtEBl_QC1BFfnvEmSqgV&oh=00_AYFvzyuRs0GdimwS8YNHrBIKiSO-Us7Y-dMEh9ct-j3knw&oe=67D035B1" alt="Image 18" class="gallery-image" onclick="openModal(this)">
+
+               
+                <!-- Add more images as needed -->
+            </div>
+        </section>
+    </main>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01" alt="Large Image">
+    </div>
+
+    <footer>
+        <p>© 2023 Marimar Beauty Salon</p>
+    </footer>
+
+    <script>
+        function openModal(img) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = img.src; 
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none"; 
+        }
+    </script>
+</body>
+</html>

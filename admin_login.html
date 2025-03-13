@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        /* General Body Styles */
+        body {
+            background-image: url('https://scontent.fcgy1-2.fna.fbcdn.net/v/t39.30808-6/475523834_1096835912455053_1762242967244972745_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeESgfwsJkuPTmM8J72xX9ycvzPop10BT9i_M-inXQFP2K13g7gYj8z2WpVm1iMniXilqjwA6aFIEhQG4Qk30N_K&_nc_ohc=Gm8ckFFl8oIQ7kNvgHFqDbj&_nc_oc=Adg8EHBP4x500UqlJiUE5jhWzHoTdU0j8uSkJXk499ottCRgCOlHyLZcLPMvb7w-i6o&_nc_zt=23&_nc_ht=scontent.fcgy1-2.fna&_nc_gid=ABnuNAdLJdDHZbbCfQp7NQU&oh=00_AYCpcfihuwL9JuhyGUoIKj_QAZ7ukzBx8qACBLb5Ab9lXg&oe=67C99784');
+            background-size: 100% auto;  /* Prevents stretching */
+            background-position: center center; /* Centers the background */
+            background-repeat: no-repeat; /* Prevents repetition */
+            background-attachment: fixed; /* Keeps background crisp */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        /* Container for the Form */
+        .login-container {
+            background-color: rgba(26, 26, 26, 0.9); /* Dark semi-opaque background */
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.5); /* Yellow shadow */
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Heading Style */
+        h2 {
+            color: #ffd700;
+            margin-bottom: 5px;
+            font-size: 26px;
+            font-weight: 600;
+            text-shadow: 1px 1px 4px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Logo Style */
+        .logo {
+            margin: 10px 0;
+        }
+
+        /* Form Label Styling */
+        label {
+            display: block;
+            text-align: left;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #ffd700;  /* Label color */
+        }
+
+        /* Form Input Fields Styling */
+        input[type="text"], input[type="password"] {
+            width: 85%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ffd700; /* Gold border */
+            border-radius: 5px;
+            font-size: 16px;
+            background: transparent; /* Keep input background transparent */
+            color: #ffd700; /* Input text color */
+            transition: border-color 0.3s ease;
+        }
+
+        /* Focus effect for the input fields */
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #fff; /* White border on focus */
+            outline: none;
+        }
+
+        /* Submit Button Styling */
+        input[type="submit"] {
+            width: 50%;
+            padding: 12px;
+            background-color: #ffd700; /* Gold background */
+            color: #000; /* Black text */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: bold;
+        }
+
+        /* Submit Button Hover Effect */
+        input[type="submit"]:hover {
+            background-color: #fff; /* White background on hover */
+            transform: translateY(-2px);
+        }
+
+        /* Error Message Styling */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 10px;
+                width: 90%;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="uploads/logo.png" alt="Logo" class="logo" width="100" height="100">
+        <h2>Admin Login</h2>
+        <form action="admin_login.php" method="POST">
+            
+            <label for="admin_username">Username:</label>
+            <input type="text" id="admin_username" name="admin_username" required>
+
+            <label for="admin_password">Password:</label>
+            <input type="password" id="admin_password" name="admin_password" required>
+
+           
+            <input type="submit" value="Login">
+           
+        </form>
+    </div>
+</body>
+</html>
